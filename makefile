@@ -1,15 +1,19 @@
 JFLAGS = -g
 JC = javac
+ENTRYPOINT = TestingJFX
 .SUFFIXES: .java .class
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-	TestingJFX.java
+	$(ENTRYPOINT).java
 
-default: classes
+default: compile
 
-classes: $(CLASSES:.java=.class)
+compile: $(CLASSES:.java=.class)
+
+run: 
+	java $(ENTRYPOINT)
 
 clean:
 	$(RM) *.class
