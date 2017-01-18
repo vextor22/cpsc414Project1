@@ -1,6 +1,10 @@
+#Author: Matthew Higgins
+#makefile structure provided by swarthmore at: 
+#https://www.cs.swarthmore.edu/~newhall/unixhelp/javamakefiles.html
+
 JFLAGS = -g
 JC = javac
-ENTRYPOINT = TestingJFX
+ENTRYPOINT = ApplicationMain
 .SUFFIXES: .java .class
 .java.class:
 	$(JC) $(JFLAGS) $*.java
