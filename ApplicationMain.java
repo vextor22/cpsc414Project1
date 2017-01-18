@@ -31,8 +31,14 @@ public class ApplicationMain extends Application {
 		MenuBar menuBar = new MenuBar();
 
 		Menu menu = new Menu("File");
+		MenuItem quitMenuItem = new MenuItem("Quit");
+		quitMenuItem.setOnAction(new EventHandler<ActionEvent>(){
+			public void handle(ActionEvent t){
+				System.exit(0);
+			}
+		});
 		menu.getItems().add(new MenuItem("Go!"));
-		menu.getItems().add(new MenuItem("Quit"));
+		menu.getItems().add(quitMenuItem);
 
 		menuBar.getMenus().add(menu);
 		menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
