@@ -18,6 +18,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.shape.Circle;
+import javafx.scene.paint.Color;
  
 public class ApplicationMain extends Application {
     public static void main(String[] args) {
@@ -55,6 +56,7 @@ public class ApplicationMain extends Application {
 					circle.setCenterX(100.0f);
 					circle.setCenterY(100.0f);
 					circle.setRadius(50.0f);
+					circle.setFill(Color.RED);
 					((VBox) scene.getRoot()).getChildren().addAll(circle);
 				}
 			}
