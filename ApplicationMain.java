@@ -17,17 +17,28 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.scene.shape.Circle;
  
 public class ApplicationMain extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+	private static int circleState = 0; //0: no circle, 1: there is a circle    
+
+	public static int getCircleState(){
+		return circleState;
+	}
+	public static void setCircleState(int newCircleState){
+		circleState = newCircleState;
+	}
+
+
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Hello World!");
-		Scene scene = new Scene(new VBox(), 300, 250);
+		final Scene scene = new Scene(new VBox(), 300, 250);
 
+		final Circle circle = new Circle();
 		MenuBar menuBar = new MenuBar();
 
 		Menu menu = new Menu("File");
@@ -37,7 +48,18 @@ public class ApplicationMain extends Application {
 				System.exit(0);
 			}
 		});
-		menu.getItems().add(new MenuItem("Go!"));
+		MenuItem goMenuItem = new MenuItem("Go!");
+		goMenuItem.setOnAction(new EventHandler<ActionEvent>(){
+			public void handle(ActionEvent t){			
+				if(ApplicationMain.getCircleState() == 0){
+					circle.setCenterX(100.0f);
+					circle.setCenterY(100.0f);
+					circle.setRadius(50.0f);
+					((VBox) scene.getRoot()).getChildren().addAll(circle);
+				}
+			}
+		});
+		menu.getItems().add(goMenuItem);
 		menu.getItems().add(quitMenuItem);
 
 		menuBar.getMenus().add(menu);
