@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
@@ -43,16 +44,18 @@ public class ApplicationMain extends Application {
     @Override
     public void start(Stage primaryStage) {
 		final Random rand = new Random();
+		
+		final Pane circlePane = new Pane();	
 		final Color paintArray[] = {Color.RED, Color.BLUE, Color.BLACK, Color.GREEN, 
 				Color.DARKGOLDENROD}; 
-        primaryStage.setTitle("Hello World!");
-		final Scene scene = new Scene(new VBox(), 300, 250);
+        primaryStage.setTitle("Circle Application");
+		final Scene scene = new Scene(new VBox(), 640, 480);
 
 		final Circle circle = new Circle();
 		circle.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent t){
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Information Dialog");
+				alert.setTitle(null);
 				alert.setHeaderText(null);
 				alert.setContentText("You have successfully selected the circle!");
 
@@ -74,11 +77,11 @@ public class ApplicationMain extends Application {
 		goMenuItem.setOnAction(new EventHandler<ActionEvent>(){
 			public void handle(ActionEvent t){			
 				if(ApplicationMain.getCircleState() == 0){
-					circle.setCenterX(100.0f);
-					circle.setCenterY(100.0f);
+					circle.setCenterX(320.0f);
+					circle.setCenterY(200.0f);
 					circle.setRadius(50.0f);
 					circle.setFill(paintArray[rand.nextInt(paintArray.length)]);
-					((VBox) scene.getRoot()).getChildren().addAll(circle);
+					circlePane.getChildren().addAll(circle);
 					ApplicationMain.setCircleState(1);
 				}
 			}
@@ -88,10 +91,9 @@ public class ApplicationMain extends Application {
 
 		menuBar.getMenus().add(menu);
 		menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
-		menuBar.setLayoutX(100);
-		menuBar.setLayoutY(0);		
-	
+
 		((VBox) scene.getRoot()).getChildren().addAll(menuBar);
+		((VBox) scene.getRoot()).getChildren().addAll(circlePane);
 
         primaryStage.setScene(scene);
         primaryStage.show();
