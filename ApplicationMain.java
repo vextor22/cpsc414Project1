@@ -43,7 +43,8 @@ public class ApplicationMain extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-		final Random rand = new Random();
+		//program's UI setup
+	    	final Random rand = new Random();
 		
 		final Pane circlePane = new Pane();	
 		final Color paintArray[] = {Color.RED, Color.BLUE, Color.BLACK, Color.GREEN, 
@@ -52,6 +53,9 @@ public class ApplicationMain extends Application {
 		final Scene scene = new Scene(new VBox(), 640, 480);
 
 		final Circle circle = new Circle();
+
+		//when the circle gets clicked on, generate an alert message
+		//if the user clicked OK, end the program
 		circle.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent t){
 				Alert alert = new Alert(AlertType.INFORMATION);
@@ -73,6 +77,10 @@ public class ApplicationMain extends Application {
 				System.exit(0);
 			}
 		});
+
+		//Go! item sets up the circle and places it in a Pane
+		//A Pane was used for the circle's container because it allows manual positioning
+		//of child objects
 		MenuItem goMenuItem = new MenuItem("Go!");
 		goMenuItem.setOnAction(new EventHandler<ActionEvent>(){
 			public void handle(ActionEvent t){			
@@ -91,7 +99,9 @@ public class ApplicationMain extends Application {
 
 		menuBar.getMenus().add(menu);
 		menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
-
+		
+		//Here the menu bar is added directly to the scene root VBox
+		//and the circle's container is added beneath.
 		((VBox) scene.getRoot()).getChildren().addAll(menuBar);
 		((VBox) scene.getRoot()).getChildren().addAll(circlePane);
 

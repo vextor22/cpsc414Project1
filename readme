@@ -1,0 +1,20 @@
+Name: Matthew Higgins
+Course: CPSC4140
+
+Instructions:
+
+Software requirements: The application requires Java 1.8 with javafx.
+		       This has been tested to work with an Oracle Java 1.8 installation, or an
+		       OpenJDK 1.8 installation with JavaFX installed on top of OpenJDK.
+
+Compile - use the command "make compile" or just "make". Alertanitively, run javac on
+	  ApplicationMain.java
+
+run     - user the command "make run" to run the program, or run java on "ApplicationMain"
+
+Design:
+
+	I chose to have the notification for clicking on the circle be a JavaFX alert message,
+	since the Alert class satisfied most of my requirements for a notification by default.
+	Utilizing the Alert box and a little bit of added logic, the full requirements for behavior
+	of the notification was satisfied.
